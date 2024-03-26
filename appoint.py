@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-#import sqlite3
+#import mysql.connector
 from datetime import datetime
 
 def book_appointment():
@@ -15,15 +15,6 @@ def book_appointment():
         messagebox.showerror("Error", "Please fill out all fields.")
         return
 
-    # Connect to the database
-    #conn = sqlite3.connect("appointments.db")
-    #c = conn.cursor()
-
-    # Insert the appointment into the database
-    c.execute("INSERT INTO appointments (pet_name, appointment_date, appointment_time, appointment_type) VALUES (?, ?, ?, ?)",
-              (pet_name, appointment_date, appointment_time, appointment_type))
-    conn.commit()
-    conn.close()
 
     # Notify the user of successful appointment booking
     messagebox.showinfo("Success", "Appointment booked successfully!")
@@ -63,3 +54,4 @@ submit_button = tk.Button(window, text="Book Appointment", command=book_appointm
 submit_button.pack(pady=10)
 
 window.mainloop()
+
